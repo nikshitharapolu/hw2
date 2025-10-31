@@ -1,11 +1,8 @@
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 import controller.ExpenseTrackerController;
 import model.ExpenseTrackerModel;
 import view.ExpenseTrackerView;
-import model.Transaction;
-import controller.InputValidation;
 
 public class ExpenseTrackerApp {
 
@@ -34,6 +31,33 @@ public class ExpenseTrackerApp {
       }
     });
 
-  }
+    // Category Filter 
+    view.getFilterComboBox()
+        .addActionListener(e -> {view.selectFilter();});
 
+    //Filter Button
+    view.getFilterButton()
+        .addActionListener(e -> {
+        String selectedFilter = (String) view.getFilterComboBox()
+                                             .getSelectedItem();
+        boolean success = false;
+        if(selectedFilter != null) {
+          if(selectedFilter.equals("Category")){
+          success = controller.filter((String) view.getCategoryComboBox().getSelectedItem());
+        }
+          else if(selectedFilter.equals("Amount")) {
+          success = controller.filter(view.getComparatorValueField(), (String) view.getComparatorComboBox().getSelectedItem());
+        } 
+        else {
+          controller.refresh();
+          success = true;
+        }
+        
+        if(!success) {
+          JOptionPane.showMessageDialog(view, "Oops! Something went wrong.");
+          view.toFront();
+        }
+      }
+    });
+  }
 }

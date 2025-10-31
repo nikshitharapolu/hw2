@@ -4,10 +4,11 @@ import view.ExpenseTrackerView;
 
 import java.util.List;
 
-
-
+import model.AmountFilter;
+import model.CategoryFilter;
 import model.ExpenseTrackerModel;
 import model.Transaction;
+import model.TransactionFilter;
 public class ExpenseTrackerController {
   
   private ExpenseTrackerModel model;
@@ -45,5 +46,32 @@ public class ExpenseTrackerController {
     return true;
   }
   
+  
   // Other controller methods
+
+  public boolean filter(String category) {
+    
+    if(!InputValidation.isValidCategory(category)) {
+      return false;
+    }
+
+    TransactionFilter amountFilter = new CategoryFilter(category);
+    List<Transaction> filteredTransactions = amountFilter.filter(model.getTransactions());
+    view.refreshTable(filteredTransactions);
+    model.setFilteredTransactions(filteredTransactions);
+
+    return true;
+  }
+
+  public boolean filter(double value, String comparator) {
+    if(!InputValidation.isValidAmount(value)) {
+      return false;
+    }
+    TransactionFilter amountFilter = new AmountFilter(value, comparator);
+    List<Transaction> filteredTransactions = amountFilter.filter(model.getTransactions());
+    model.setFilteredTransactions(filteredTransactions);
+    view.refreshTable(filteredTransactions);
+
+    return true;
+  }
 }

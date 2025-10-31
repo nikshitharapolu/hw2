@@ -7,9 +7,13 @@ import java.util.List;
 public class ExpenseTrackerModel {
 
   private List<Transaction> transactions;
+  private List<Transaction> filteredTransactions;
+
 
   public ExpenseTrackerModel() {
     transactions = new ArrayList<>(); 
+    filteredTransactions = new ArrayList<>();
+
   }
 
   public void addTransaction(Transaction t) {
@@ -24,6 +28,14 @@ public class ExpenseTrackerModel {
     // Alternative 1: Apply the decorator design pattern (see below)
     // Alternative 2: Return a copy of the list
     return Collections.unmodifiableList(transactions);
+  }
+
+  public List<Transaction> getFilteredTransactions() {
+    return filteredTransactions;
+  }
+
+  public void setFilteredTransactions(List<Transaction> filteredTransactions) {
+    this.filteredTransactions = filteredTransactions;
   }
 
 }
