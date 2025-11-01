@@ -1,0 +1,70 @@
+Usability: Export to CSV file 
+
+To implement export to CSV file functionality while maintaining the MVC architecture, UI design laws and OO design principles.
+To achieve it, the following changes are needed:
+
+
+Model:
+- Model already keeps track of all the transactions along with filtered transactions and stores them. A method can be added which returns the transactions that are to be exported.
+
+View:
+- Add "Export to CSV" button in the UI.
+- Add a JTextField so that the user can enter the output file name.
+- Display error messages if there are any failures.
+- Provide a tooltip: "Enter a valid file name ending with .csv".
+- Add it to the button panel.
+
+Controller:
+- Handle the click event for export button.
+- Validate file name.
+- Call the CSV export method.
+
+public void exportToCSV(String fileName) {
+    if(!InputValidation.isValidFileName(fileName)) {
+        view.showMessage("Invalid file name. Must end with .csv and not contain '@$#(){}[]/,.&*?<>'.");
+        return;
+    }
+    List<Transaction> transactions = model.getTransactionsForExport();
+    boolean exported = CSVExport.export(fileName, transactions);
+    if(exported) {
+        view.showMessage("Export to "+fileName+" successful!");
+    } 
+    else {
+        view.showMessage("Export failed. Please try again.");
+    }
+}
+
+For file name validation,
+
+public static boolean isValidFileName(String fileName) {
+    if(fileName == null || fileName.trim().isEmpty()) return false;
+    if(!fileName.toLowerCase().endsWith(".csv")) return false;
+    return !fileName.matches("@$#(){}[]/,.&*?<>");
+}
+
+
+- Add a new file for CSVExport which creates/opens the file with the given filename, adds the header row and then adds each transaction in a new row.
+- Handle the exceptions while exporting.
+
+The export method would be as follows:
+
+public static boolean export(String fileName, List<Transaction> transactions) {
+    try (FileWriter writer = new FileWriter(fileName)) {
+        writer.append("Serial,Amount,Category,Date\n");
+        int serialno = 1;
+        for(Transaction t : transactions) {
+            writer.append(serialno++ + ",").append(t.getAmount() + ",").append(t.getCategory() + ",").append(t.getTimestamp() + "\n");
+        }
+        return true;
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+
+User Interaction Flow:
+- When the user clicks on the export button, the expense tracker opens a text field which allows the user to enter the file name.
+- Then the file name is validated.
+- All the transactions that are being displayed are exported to the designated .csv file and a success/failure message is displayed.
+
