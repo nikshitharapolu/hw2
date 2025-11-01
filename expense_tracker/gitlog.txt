@@ -1,3 +1,15 @@
+Commit: d91c8d2
+Author: nikshitharapolu
+Date: Fri Oct 31 22:31:42 2025 -0400
+Message: Added export.txt
+
+
+Commit: 3a50dc9
+Author: nikshitharapolu
+Date: Fri Oct 31 21:16:23 2025 -0400
+Message: Added gitlog.txt file
+
+
 Commit: da8729a
 Author: nikshitharapolu
 Date: Fri Oct 31 21:09:39 2025 -0400
