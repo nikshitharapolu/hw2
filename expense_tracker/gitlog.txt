@@ -1,0 +1,83 @@
+Commit: da8729a
+Author: nikshitharapolu
+Date: Fri Oct 31 21:09:39 2025 -0400
+Message: Generated jdoc
+
+
+Commit: 84c1f90
+Author: shiva-sravani-mudiyanur
+Date: Fri Oct 31 20:24:26 2025 -0400
+Message: Updated TestExample with given test cases and uploaded test_screenshot
+
+
+Commit: 95746ed
+Author: shiva-sravani-mudiyanur
+Date: Fri Oct 31 18:22:28 2025 -0400
+Message: Updated ExpenseTrackerView and remaining files( ExpenseTrackerApp, ExpenseTrackerController, ExpenseTrackerModel) accordingly
+
+
+Commit: f92d8a8
+Author: shiva-sravani-mudiyanur
+Date: Fri Oct 31 16:29:23 2025 -0400
+Message: Updated AmoutFilter (such that it uses comparator )
+
+
+Commit: ed3fdde
+Author: shiva-sravani-mudiyanur
+Date: Fri Oct 31 07:02:35 2025 -0400
+Message: Created the AmountFilter class that implements TransactionFilter Interface
+
+
+Commit: 7d168bd
+Author: shiva-sravani-mudiyanur
+Date: Fri Oct 31 06:56:25 2025 -0400
+Message: Created CategoryFilter that implements TransactionFilter
+
+
+Commit: a4ec9d7
+Author: shiva-sravani-mudiyanur
+Date: Fri Oct 31 06:46:48 2025 -0400
+Message: created TranscationFilter Interface (and defined filter method which returns List of Transaction Objects)
+
+
+Commit: a640f2a
+Author: Heather Conboy
+Date: Wed Oct 22 14:40:05 2025 -0400
+Message: Update README.md
+
+
+Commit: 5095c4a
+Author: Heather Conboy
+Date: Wed Oct 22 09:54:26 2025 -0400
+Message: Modified the Transaction class to be immutable. Modified the ExpenseTrackerModel class to encapsulate the list of transactions.
+
+
+Commit: b21da9f
+Author: Mahbuba Tasmin
+Date: Sat Sep 2 02:42:57 2023 -0400
+Message: Build file update
+
+
+Commit: ccabaff
+Author: Mahbuba Tasmin
+Date: Tue Aug 29 14:49:22 2023 -0400
+Message: File Update
+
+
+Commit: 2574c71
+Author: Mahbuba Tasmin
+Date: Wed Aug 9 14:11:14 2023 -0400
+Message: Total Cost and Serial update
+
+
+Commit: d29d2c8
+Author: Mahbuba Tasmin
+Date: Wed Aug 9 12:54:46 2023 -0400
+Message: HW2 template files
+
+
+Commit: 6a51d80
+Author: Mahbuba Tasmin
+Date: Tue Aug 8 21:48:41 2023 -0400
+Message: Initial commit
+
